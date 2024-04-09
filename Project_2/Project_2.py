@@ -1,9 +1,11 @@
 from datetime import datetime
+
 import pandas as pd
 from playwright.sync_api import sync_playwright
 
+input_file="C:\\Users\\lnv0179\\Desktop\\Python\\Input123.xlsx"
 # Read configuration from Excel file
-df = pd.read_excel("C:\\Users\\lnv0179\\Desktop\\Python\\Input123.xlsx",
+df = pd.read_excel(input_file,
                    sheet_name='Configuration')
 username = df.loc[0, 'Username']
 password = df.loc[0, 'Password']
@@ -91,23 +93,23 @@ print(result_df)
 
 # Write DataFrame to Excel file
 # Path to your Excel file
-file_path = "C:\\Users\\lnv0179\\Desktop\\Python\\Input123.xlsx"
+#file_path = "C:/Users/lnv0165/PycharmProjects/Project2/PythonRepo/Project2/Input123.xlsx"
 
 # Attempt to write to a new sheet in the existing workbook
 try:
     # Attempt to write to a new sheet in the existing workbook
-    with pd.ExcelWriter(file_path, engine='openpyxl', mode='a', if_sheet_exists='new') as writer:
+    with pd.ExcelWriter(input_file, engine='openpyxl', mode='a', if_sheet_exists='new') as writer:
         result_df.to_excel(writer, sheet_name=sheet_name, index=False)
 
     # If the file does not exist, create it with the DataFrame
 except FileNotFoundError:
     # If the file does not exist, create it with the DataFrame
-    result_df.to_excel(file_path, sheet_name=sheet_name, index=False)
+    result_df.to_excel(input_file, sheet_name=sheet_name, index=False)
 
 ################################################################################################
 # Count of Keyword values
 
-file_path = "C:\\Users\\lnv0179\\Desktop\\Python\\Input123.xlsx"
+file_path = "C:/Users/lnv0165/PycharmProjects/Project2/PythonRepo/Project2/Input123.xlsx"
 df = pd.read_excel(file_path, sheet_name='ScoreConfig')
 
 print(df)
@@ -144,8 +146,9 @@ import pandas as pd
 from openpyxl.reader.excel import load_workbook
 
 # Read the Excel file
-file_path = "C:\\Users\\lnv0179\\Desktop\\Python\\Input123.xlsx"
-df = pd.read_excel(file_path, sheet_name='Result')
+#file_path = "C:/Users/lnv0165/PycharmProjects/Project2/PythonRepo/Project2/Input123.xlsx"
+
+df = pd.read_excel(input_file, sheet_name='Result')
 
 # Define keywords for each column
 keywords = {
@@ -181,11 +184,11 @@ from openpyxl.formatting.rule import CellIsRule
 from openpyxl.styles import PatternFill
 from openpyxl.utils import get_column_letter
 
-workbook_Path = "C:\\Users\\lnv0179\\Desktop\\Python\\Input123.xlsx"
+#workbook_Path = "C:/Users/lnv0165/PycharmProjects/Project2/PythonRepo/Project2/Input123.xlsx"
 worksheet_name = "Result"
 
 # Load the Excel file
-workbook = load_workbook(workbook_Path)
+workbook = load_workbook(input_file)
 
 # Access a specific worksheet by name
 worksheet = workbook[worksheet_name]
@@ -225,4 +228,4 @@ if column_index:
     worksheet.auto_filter.ref = f"C1:{column_letter}{worksheet.max_row}"
     worksheet.auto_filter.add_sort_condition(f"{column_letter}2:{column_letter}{worksheet.max_row}", descending=True)
 
-    workbook.save(workbook_Path)
+    workbook.save(input_file)
