@@ -3,7 +3,7 @@ from datetime import datetime
 import pandas as pd
 from playwright.sync_api import sync_playwright
 
-input_file="C:\\Users\\lnv0179\\Desktop\\Python\\Input123.xlsx"
+input_file = "C:\\Users\\lnv0179\\Desktop\\Python\\Input123.xlsx"
 # Read configuration from Excel file
 df = pd.read_excel(input_file,
                    sheet_name='Configuration')
@@ -93,7 +93,7 @@ print(result_df)
 
 # Write DataFrame to Excel file
 # Path to your Excel file
-#file_path = "C:/Users/lnv0165/PycharmProjects/Project2/PythonRepo/Project2/Input123.xlsx"
+# file_path = "C:/Users/lnv0165/PycharmProjects/Project2/PythonRepo/Project2/Input123.xlsx"
 
 # Attempt to write to a new sheet in the existing workbook
 try:
@@ -109,8 +109,8 @@ except FileNotFoundError:
 ################################################################################################
 # Count of Keyword values
 
-file_path = "C:/Users/lnv0165/PycharmProjects/Project2/PythonRepo/Project2/Input123.xlsx"
-df = pd.read_excel(file_path, sheet_name='ScoreConfig')
+
+df = pd.read_excel(input_file, sheet_name='ScoreConfig')
 
 print(df)
 
@@ -146,7 +146,7 @@ import pandas as pd
 from openpyxl.reader.excel import load_workbook
 
 # Read the Excel file
-#file_path = "C:/Users/lnv0165/PycharmProjects/Project2/PythonRepo/Project2/Input123.xlsx"
+# file_path = "C:/Users/lnv0165/PycharmProjects/Project2/PythonRepo/Project2/Input123.xlsx"
 
 df = pd.read_excel(input_file, sheet_name='Result')
 
@@ -172,7 +172,7 @@ df['Score'] = total_counts
 # Print the DataFrame with the new "Score" column
 print(df)
 
-with pd.ExcelWriter(file_path, engine='openpyxl', mode='a', if_sheet_exists='replace') as writer:
+with pd.ExcelWriter(input_file, engine='openpyxl', mode='a', if_sheet_exists='replace') as writer:
     df.to_excel(writer, sheet_name='Result', index=False)
 
 ##############################################################################################
@@ -184,7 +184,7 @@ from openpyxl.formatting.rule import CellIsRule
 from openpyxl.styles import PatternFill
 from openpyxl.utils import get_column_letter
 
-#workbook_Path = "C:/Users/lnv0165/PycharmProjects/Project2/PythonRepo/Project2/Input123.xlsx"
+# workbook_Path = "C:/Users/lnv0165/PycharmProjects/Project2/PythonRepo/Project2/Input123.xlsx"
 worksheet_name = "Result"
 
 # Load the Excel file
